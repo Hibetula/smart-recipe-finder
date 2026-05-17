@@ -7,46 +7,67 @@ function findRecipes() {
     let results =
         document.getElementById("results");
 
-    let recipes = [];
+    let output = "";
+
+    function addRecipe(name) {
+        output += `
+        <div class="recipe-card">
+            <h3>${name}</h3>
+        </div>
+        `;
+    }
 
     // Omelette
+    if (input.includes("egg") && input.includes("onion")) {
+        addRecipe("🥚 Omelette");
+    }
+
+    // Firfir
     if (
-        input.includes("egg") &&
-        input.includes("onion")
+        input.includes("injera") &&
+        input.includes("pepper") &&
+        input.includes("salt") &&
+        input.includes("oil") &&
+        input.includes("water")
     ) {
-        recipes.push("🥚 Omelette");
+        addRecipe("🔥 Firfir");
+    }
+
+    // Genfo
+    if (
+        input.includes("flour") &&
+        input.includes("water") &&
+        input.includes("butter")
+    ) {
+        addRecipe("🥣 Genfo");
+    }
+
+    // Kitfo with Kocho
+    if (
+        input.includes("meat") &&
+        input.includes("kocho")
+    ) {
+        addRecipe("🥩 Kitfo with Kocho");
     }
 
     // Egg Sandwich
-    if (
-        input.includes("bread") &&
-        input.includes("egg")
-    ) {
-        recipes.push("🥪 Egg Sandwich");
+    if (input.includes("bread") && input.includes("egg")) {
+        addRecipe("🥪 Egg Sandwich");
     }
 
     // Tomato Rice
-    if (
-        input.includes("rice") &&
-        input.includes("tomato")
-    ) {
-        recipes.push("🍅 Tomato Rice");
+    if (input.includes("rice") && input.includes("tomato")) {
+        addRecipe("🍅 Tomato Rice");
     }
 
     // Pasta
-    if (
-        input.includes("pasta") &&
-        input.includes("tomato")
-    ) {
-        recipes.push("🍝 Pasta");
+    if (input.includes("pasta") && input.includes("tomato")) {
+        addRecipe("🍝 Pasta");
     }
 
     // Fried Rice
-    if (
-        input.includes("rice") &&
-        input.includes("egg")
-    ) {
-        recipes.push("🍚 Fried Rice");
+    if (input.includes("rice") && input.includes("egg")) {
+        addRecipe("🍚 Fried Rice");
     }
 
     // Pancakes
@@ -55,66 +76,47 @@ function findRecipes() {
         input.includes("egg") &&
         input.includes("milk")
     ) {
-        recipes.push("🥞 Pancakes");
+        addRecipe("🥞 Pancakes");
     }
 
-    // Salad
+    //Cake
     if (
-        input.includes("tomato") &&
-        input.includes("cucumber")
+        input.includes("flour")&&
+        input.includes("egg")&&
+        input.includes("sugar")&&
+        input.includes("milk")
     ) {
-        recipes.push("🥗 Salad");
+        addRecipe("cake");
+    }
+    // Salad
+    if (input.includes("tomato") && input.includes("cucumber")) {
+        addRecipe("🥗 Salad");
     }
 
     // Burger
-    if (
-        input.includes("bread") &&
-        input.includes("meat")
-    ) {
-        recipes.push("🍔 Burger");
+    if (input.includes("bread") && input.includes("meat")) {
+        addRecipe("🍔 Burger");
     }
 
     // Pizza
-    if (
-        input.includes("cheese") &&
-        input.includes("bread")
-    ) {
-        recipes.push("🍕 Pizza");
+    if (input.includes("cheese") && input.includes("bread")) {
+        addRecipe("🍕 Pizza");
     }
 
     // Chicken Soup
-    if (
-        input.includes("chicken") &&
-        input.includes("onion")
-    ) {
-        recipes.push("🍲 Chicken Soup");
+    if (input.includes("chicken") && input.includes("onion")) {
+        addRecipe("🍲 Chicken Soup");
     }
 
     // French Fries
-    if (
-        input.includes("potato")
-    ) {
-        recipes.push("🍟 French Fries");
+    if (input.includes("potato")) {
+        addRecipe("🍟 French Fries");
     }
 
-    // Show recipes
-    if (recipes.length > 0) {
-
-        let output =
-            "<h3>Recipes You Can Make:</h3><ul>";
-
-        for (let i = 0; i < recipes.length; i++) {
-            output +=
-                "<li>" + recipes[i] + "</li>";
-        }
-
-        output += "</ul>";
-
-        results.innerHTML = output;
-
+    // Show results
+    if (output === "") {
+        results.innerHTML = "<p>❌ No recipes found.</p>";
     } else {
-
-        results.innerHTML =
-            "<p>❌ No recipes found.</p>";
+        results.innerHTML = output;
     }
 }

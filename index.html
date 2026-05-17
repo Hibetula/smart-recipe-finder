@@ -1,27 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Smart Recipe Finder</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Smart Recipe Finder</h1>
+    <!-- Header Section -->
+    <div class="header">
+        <h1>🍳 Smart Recipe Finder</h1>
+        <p>Enter ingredients and discover what you can cook</p>
+    </div>
 
-        <p>Enter ingredients you have:</p>
+    <!-- Main App Box -->
+    <div class="container">
 
         <input
             type="text"
             id="ingredients"
-            placeholder="Example: egg, onion, tomato"
+            placeholder="e.g. egg, onion, tomato"
         >
 
         <button onclick="findRecipes()">
-            Find Recipes
+            🔍 Find Recipes
         </button>
 
+        <!-- Results Section -->
         <div id="results"></div>
+
     </div>
 
     <script src="script.js"></script>
